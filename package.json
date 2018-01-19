@@ -1,0 +1,31 @@
+{
+  "name": "cleveroad",
+  "version": "1.0.0",
+  "description": "Cleveroad simple server",
+  "main": "server",
+  "scripts": {
+    "start": "supervisor -- server.js --debug environment=development",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Andrii Hrebin",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "cookie-parser": "^1.4.3",
+    "cors": "^2.8.4",
+    "debug": "^3.1.0",
+    "express": "^4.16.2",
+    "http": "0.0.0",
+    "joi": "^13.1.0",
+    "jsonwebtoken": "^8.1.0",
+    "lodash": "^4.17.4",
+    "morgan": "^1.9.0",
+    "multer": "^1.3.0",
+    "mysql2": "^1.5.1",
+    "path": "^0.12.7",
+    "sequelize": "^4.31.2",
+    "sequelize-cli": "^3.2.0",
+    "supervisor": "^0.12.0",
+    "uuid": "^3.2.1"
+  }
+}

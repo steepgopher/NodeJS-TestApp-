@@ -1,0 +1,10 @@
+{
+    "development": {
+        "JWT_SECRET": "JWT_SECRET",
+        "UPLOAD_PATH": "uploads"
+    },
+    "production": {
+        "JWT_SECRET": "JWT_SECRET",
+        "UPLOAD_PATH": "uploads"
+    }
+}

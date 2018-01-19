@@ -3,7 +3,7 @@
 const User        = require('../../models').User,
       Profile     = require('../../models').Profile,
       env         = process.env.NODE_ENV || 'development',
-      JWT_SECRET  = require(`${__dirname}/../../global.config.json`)[env].JWT_SECRET,
+      JWT_SECRET  = require(`${__dirname}/../../config/global.config.json`)[env].JWT_SECRET,
       jwt         = require('jsonwebtoken');
    
 module.exports = {

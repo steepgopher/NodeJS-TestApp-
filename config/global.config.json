@@ -6,5 +6,9 @@
     "production": {
         "JWT_SECRET": "JWT_SECRET",
         "UPLOAD_PATH": "uploads"
+    },
+    "test": {
+        "JWT_SECRET": "JWT_SECRET",
+        "UPLOAD_PATH": "uploads"
     }
 }

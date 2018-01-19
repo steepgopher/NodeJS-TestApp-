@@ -1,7 +1,7 @@
 'use strict';
 
 const env               = process.env.NODE_ENV || 'development',
-      UPLOAD_PATH       = require(`${__dirname}/../../global.config.json`)[env].UPLOAD_PATH,
+      UPLOAD_PATH       = require(`${__dirname}/../../config/global.config.json`)[env].UPLOAD_PATH,
       multer            = require('multer'),
       path              = require('path'),
       uuid              = require("uuid");

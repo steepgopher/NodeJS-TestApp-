@@ -8,7 +8,13 @@ const Profile       = require('../../models').Profile,
 module.exports = {
     read: async (req, res) => {
         try {
-            const profile = await Profile.findOne({ where: {user_id: req.user.id}, raw: true });
+            const profile = await Profile.findOne({
+                attributes: {
+                    exclude: ['user_id']
+                },
+                where: { user_id: req.user.id },
+                raw: true
+            });
             if (!profile) {
                 return res.status(404).json({ message: 'Profile not found.' });
             }

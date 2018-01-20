@@ -1,14 +1,14 @@
 {
     "development": {
-        "JWT_SECRET": "JWT_SECRET",
+        "JWT_SECRET": "qwertyuiopasdfghjklzxcvbnm123456",
         "UPLOAD_PATH": "uploads"
     },
     "production": {
-        "JWT_SECRET": "JWT_SECRET",
+        "JWT_SECRET": "qwertyuiopasdfghjklzxcvbnm123456",
         "UPLOAD_PATH": "uploads"
     },
     "test": {
-        "JWT_SECRET": "JWT_SECRET",
+        "JWT_SECRET": "qwertyuiopasdfghjklzxcvbnm123456",
         "UPLOAD_PATH": "uploads"
     }
 }

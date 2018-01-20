@@ -1,7 +1,8 @@
 'use strict';
 
 const Product      = require('../../models').Product,
-      _             = require('lodash');
+      _            = require('lodash'),
+      logger       = require('../utils/logger');
 
 module.exports = {
     read: async (req, res) => {
@@ -18,6 +19,7 @@ module.exports = {
 
             return res.status(200).json(product);
         } catch (error) {
+            logger.error(error);
             return res.status(500).json({ message: error.message });
         }
     },
@@ -43,6 +45,7 @@ module.exports = {
                 });
             return res.status(200).json(products);
         } catch (error) {
+            logger.error(error);
             return res.status(500).json({ message: error.message });
         }
     },
@@ -55,6 +58,7 @@ module.exports = {
             });
             return res.status(200).json(product.get({plain:true}));
         } catch (error) {
+            logger.error(error);
             return res.status(500).json({ message: error.message });
         }
     },
@@ -78,6 +82,7 @@ module.exports = {
 
             return res.status(200).json(product);
         } catch (error) {
+            logger.error(error);
             return res.status(500).json({ message: error.message });
         }
     },
@@ -98,6 +103,7 @@ module.exports = {
             });
             return res.status(200).json({message:'Success'});
         } catch (error) {
+            logger.error(error);
             return res.status(500).json({ message: error.message });
         }
     }

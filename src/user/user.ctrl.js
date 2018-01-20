@@ -1,7 +1,8 @@
 'use strict';
 
 const Profile       = require('../../models').Profile,
-      User          = require('../../models').User;
+      User          = require('../../models').User,
+      logger        = require('../utils/logger');
 
 module.exports = {
     read: async (req, res) => {
@@ -17,6 +18,7 @@ module.exports = {
             });
             return res.status(200).json(account);
         } catch (error) {
+            logger.error(error);
             return res.status(500).json({ message: error.message });
         }
     },
@@ -37,6 +39,7 @@ module.exports = {
             });
             return res.status(200).json(accounts);
         } catch (error) {
+            logger.error(error);
             return res.status(500).json({ message: error.message });
         }
     }

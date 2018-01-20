@@ -3,7 +3,8 @@
 const   env         = process.env.NODE_ENV || 'development',
         JWT_SECRET  = require(`${__dirname}/../../config/global.config.json`)[env].JWT_SECRET,
         jwt         = require('jsonwebtoken'),
-        User        = require('../../models').User;
+        User        = require('../../models').User,
+        logger      = require('../utils/logger');
 
 module.exports = {
     isLogged: (req, res, next) => {
@@ -19,17 +20,20 @@ module.exports = {
                         attributes: ['id']
                     }).then(user => {
                         if (!user) {
+                            logger.error('Error 401. Token is invalid.');
                             return res.status(401).json({ message: 'Token is invalid.' });
                         } else {
                             req.user = decoded;
                         }
                         next();
                     }, error => {
+                        logger.error(error);
                         return res.status(401).json({ message: error.message });
                     });
                 }
             });
         } else {
+            logger.error('Error 403. No token provided.');
             return res.status(403).send({
                 message: 'No token provided.'
             });

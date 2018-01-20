@@ -3,7 +3,8 @@
 const Profile       = require('../../models').Profile,
       User          = require('../../models').User,
       AccountHelper = require('../utils/accountHelper'),
-      _             = require('lodash');
+      _             = require('lodash'),
+      logger        = require('../utils/logger');
 
 module.exports = {
     read: async (req, res) => {
@@ -16,11 +17,13 @@ module.exports = {
                 raw: true
             });
             if (!profile) {
+                logger.error('Error 404. Profile not found.');
                 return res.status(404).json({ message: 'Profile not found.' });
             }
             profile.email = req.user.email;
             return res.status(200).json(profile);
         } catch (error) {
+            logger.error(error);
             return res.status(500).json({ message: error.message });
         }
     },
@@ -76,6 +79,7 @@ module.exports = {
             return res.status(200).json(account);
             
         } catch (error) {
+            logger.error(error);
             return res.status(500).json({ message: error.message });
         }
     }

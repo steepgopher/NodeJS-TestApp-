@@ -4,20 +4,23 @@ const User        = require('../../models').User,
       Profile     = require('../../models').Profile,
       env         = process.env.NODE_ENV || 'development',
       JWT_SECRET  = require(`${__dirname}/../../config/global.config.json`)[env].JWT_SECRET,
-      jwt         = require('jsonwebtoken');
+      jwt         = require('jsonwebtoken'),
+      logger      = require('../utils/logger');
    
 module.exports = {
     login: async (req, res) => {
         try {
             const user = await User.findOne({ where: req.body, raw: true })
             if (!user) {
-                return res.status(422).json({ field :"password", message: 'Wrong email or password.' });
+                logger.error('Error 422. Wrong email or password.');
+                return res.status(422).json({ field : 'password', message: 'Wrong email or password.' });
             }
             const token = jwt.sign(user, JWT_SECRET, {
                 expiresIn: 2440
             });
             return res.status(200).json({ token });
         } catch (error) {
+            logger.error(error);
             return res.status(500).json({ message: error.message });
         }
     },
@@ -32,6 +35,7 @@ module.exports = {
                     });
 
             if (existUser) {
+                logger.error('Error 409. User already exists.');
                 return res.status(409).json({ message: 'User already exists.' })
             } else {
                 const user = await User.create(data);
@@ -46,6 +50,7 @@ module.exports = {
                 return res.status(200).json({ token });
             }
         } catch (error) {
+            logger.error(error);
             return res.status(500).json({ message: error.message });
         }
     }

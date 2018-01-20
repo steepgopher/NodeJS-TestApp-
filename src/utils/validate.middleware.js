@@ -1,6 +1,7 @@
 'use strict';
 
-const Joi = require('joi');
+const Joi       = require('joi'),
+      logger    = require('../utils/logger');
 
 module.exports = (schema) => {
     return (req, res, next) => {
@@ -12,6 +13,7 @@ module.exports = (schema) => {
                     field:      err.details[0].path[0],
                     message:    err.message
                 };
+                logger.error(errorData);
                 res.status(422).json(errorData);
             };
         });

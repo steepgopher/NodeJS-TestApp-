@@ -10,7 +10,7 @@ npm i -g supervisor
 npm start
 ```
 
-## Running unit tests
+## Running tests
 
 Run `npm run test`.
 
